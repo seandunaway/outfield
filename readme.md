@@ -7,7 +7,7 @@ count strikes away from **at the money** to options priced <= $0.10
 
 `npm install`
 
-to spit at open
+to [spit](https://github.com/seandunaway/spit) at open
 
 `crontab ./crontab`
 
