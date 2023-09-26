@@ -2,7 +2,7 @@
 
 import {JSDOM} from 'jsdom'
 
-let MAGIC_NUMBER = 0.10
+let MAGIC_NUMBER = process.argv[2] ?? 0.10
 
 let dom = await JSDOM.fromURL('https://finance.yahoo.com/quote/SPY/options')
 let document = dom.window.document

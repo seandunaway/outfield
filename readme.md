@@ -16,6 +16,8 @@ to [spit](https://github.com/seandunaway/spit) at open
 
 `./index.mjs`
 
+optionally pass magic number as first argument
+
 
 ### output
 
