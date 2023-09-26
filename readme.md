@@ -1,6 +1,6 @@
 # outfield
 
-count 0dte strikes away from **at the money** to options priced <= $0.10
+count strikes away from **at the money** to options priced <= $0.10
 
 
 ### install
@@ -14,16 +14,16 @@ to [spit](https://github.com/seandunaway/spit) at open
 
 ### run
 
-`./index.mjs`
+`./index.mjs 0.10`
 
-optionally pass magic number as first argument
+optionally pass option price as first argument
 
 
 ### output
 
 `+6 -9`
 
-6 call strikes above, 9 put strikes below
+6 call strikes above and 9 put strikes below are <= $0.10
 
 
 ### uninstall
