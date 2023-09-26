@@ -15,7 +15,7 @@ for (let table of tables) {
     else if (table.classList.contains('puts')) type = 'put'
     else continue
 
-    let rows = document.querySelectorAll('tbody tr')
+    let rows = table.querySelectorAll('tbody tr')
     for (let row of rows) {
         let itm = row.classList.contains('in-the-money')
         let strike_text = row.querySelector('td.data-col2 a')?.textContent
