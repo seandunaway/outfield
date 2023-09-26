@@ -1,6 +1,6 @@
 # outfield
 
-count strikes away from **at the money** to options priced <= $0.10
+count 0dte strikes away from **at the money** to options priced <= $0.10
 
 
 ### install
@@ -206,3 +206,8 @@ optionally pass magic number as first argument
   { type: 'put', itm: true, strike: 515, price: 83.67 }
 ]
 ```
+
+
+### todo
+
+specify expiration
