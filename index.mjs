@@ -46,4 +46,4 @@ for (let i = options.length - 1; i >= 0; i--) {
     if (options[i].price <= MAGIC_NUMBER) break
 }
 
-console.info(`+${call_strike_count}/-${put_strike_count}`)
+console.info(`+${call_strike_count} -${put_strike_count}`)
