@@ -17,6 +17,13 @@ to [spit](https://github.com/seandunaway/spit) at open
 `./index.mjs`
 
 
+### output
+
+`+6 -9`
+
+6 call strikes above, 9 put strikes below
+
+
 ### uninstall
 
 `crontab -r`
