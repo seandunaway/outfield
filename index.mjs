@@ -7,10 +7,6 @@ let MAGIC_NUMBER = 0.10
 let dom = await JSDOM.fromURL('https://finance.yahoo.com/quote/SPY/options')
 let document = dom.window.document
 
-let quote_text = document.querySelector('[data-test="qsp-price"]')?.textContent
-if (!quote_text) throw new Error()
-let quote = Math.round(parseFloat(quote_text))
-
 let options = []
 let tables = document.querySelectorAll('table')
 for (let table of tables) {
