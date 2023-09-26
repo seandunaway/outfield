@@ -2,7 +2,7 @@
 
 import {JSDOM} from 'jsdom'
 
-let MAGIC_NUMBER = process.argv[2] ?? 0.10
+let magic_number = parseFloat(process.argv[2]) || 0.10
 
 let dom = await JSDOM.fromURL('https://finance.yahoo.com/quote/SPY/options')
 let document = dom.window.document
@@ -35,7 +35,7 @@ for (let i = 0; i <= options.length - 1; i++) {
     if (options[i].type !== 'call') continue
     if (options[i].itm) continue
     call_strike_count++
-    if (options[i].price <= MAGIC_NUMBER) break
+    if (options[i].price <= magic_number) break
 }
 
 let put_strike_count = 0
@@ -43,7 +43,7 @@ for (let i = options.length - 1; i >= 0; i--) {
     if (options[i].type !== 'put') continue
     if (options[i].itm) continue
     put_strike_count++
-    if (options[i].price <= MAGIC_NUMBER) break
+    if (options[i].price <= magic_number) break
 }
 
 console.info(`+${call_strike_count} -${put_strike_count}`)
