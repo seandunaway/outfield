@@ -59,4 +59,6 @@ for (let i = options.length - 1; i >= 0; i--) {
     if (options[i].price <= price_float) break
 }
 
+if (!call_strike_count && !put_strike_count) process.exit(1)
+
 console.info(`+${call_strike_count} -${put_strike_count}`)
