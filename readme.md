@@ -1,6 +1,6 @@
 # outfield
 
-count strikes away from **at the money** to options priced <= $0.10
+count strikes away from **at the money** to specified price
 
 
 ### install
@@ -14,16 +14,19 @@ to [spit](https://github.com/seandunaway/spit) at open
 
 ### run
 
-`./index.mjs 0.10`
+`$ ./index.mjs -h`
 
-optionally pass option price as first argument
+```usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]```
 
+`$ ./index.mjs -s tsla -p 0.20`
 
-### output
+```+11 -10```
 
-`+6 -9`
+`$ ./index.mjs`
 
-6 call strikes above and 9 put strikes below are <= $0.10
+```+8 -8```
+
+defaults to SPY options at $0.10
 
 
 ### uninstall
