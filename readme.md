@@ -14,17 +14,19 @@ to [spit](https://github.com/seandunaway/spit) at open
 
 ### run
 
-`$ ./index.mjs -h`
+```
+$ ./index.mjs -h
 
-```usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]```
+usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]
 
-`$ ./index.mjs -s tsla -p 0.20`
+$ ./index.mjs -s tsla -p 0.20
 
-```+11 -10```
++11 -10
 
-`$ ./index.mjs`
+$ ./index.mjs
 
-```+8 -8```
++8 -8
+```
 
 defaults to SPY options at $0.10
 
