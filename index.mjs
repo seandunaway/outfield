@@ -1,10 +1,23 @@
 #!/usr/bin/env node
 
+import {parseArgs} from 'node:util'
 import {JSDOM} from 'jsdom'
 
-let magic_number = parseFloat(process.argv[2]) || 0.10
+let {values, positionals} = parseArgs({
+    options: {
+        price: {short: 'p', type: 'string', default: '0.10'},
+        symbol: {short: 's', type: 'string', default: 'SPY'},
+        help: {short: 'h', type: 'boolean'},
+    },
+    strict: false,
+})
+if (values.help || positionals.length) {
+    console.error('usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]')
+    process.exit(1)
+}
+let price_float = parseFloat(/** @type {string} */ (values.price))
 
-let dom = await JSDOM.fromURL('https://finance.yahoo.com/quote/SPY/options')
+let dom = await JSDOM.fromURL(`https://finance.yahoo.com/quote/${values.symbol}/options`)
 let document = dom.window.document
 
 let options = []
@@ -35,7 +48,7 @@ for (let i = 0; i <= options.length - 1; i++) {
     if (options[i].type !== 'call') continue
     if (options[i].itm) continue
     call_strike_count++
-    if (options[i].price <= magic_number) break
+    if (options[i].price <= price_float) break
 }
 
 let put_strike_count = 0
@@ -43,7 +56,7 @@ for (let i = options.length - 1; i >= 0; i--) {
     if (options[i].type !== 'put') continue
     if (options[i].itm) continue
     put_strike_count++
-    if (options[i].price <= magic_number) break
+    if (options[i].price <= price_float) break
 }
 
 console.info(`+${call_strike_count} -${put_strike_count}`)
