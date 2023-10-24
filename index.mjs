@@ -81,7 +81,7 @@ for (let i = options.length - 1; i >= 0; i--) {
 if (!call_strike_amount && !put_strike_amount) process.exit(1)
 
 let output = ''
-output += `${symbol}:${quote.toFixed(2)}`
+output += `${symbol} ${quote.toFixed(2)}`
 output += ' '
 output += `+${call_strike_count} ($${call_strike_amount.toFixed(2)})`
 output += ' '
