@@ -7,12 +7,13 @@ let {values, positionals} = parseArgs({
     options: {
         price: {short: 'p', type: 'string', default: '0.10'},
         symbol: {short: 's', type: 'string', default: 'SPY'},
+        encode: {short: 'e', type: 'boolean', default: false},
         help: {short: 'h', type: 'boolean'},
     },
     strict: false,
 })
 if (values.help || positionals.length) {
-    console.error('usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]')
+    console.error('usage: [-p|--price <price>] [-s|--symbol <symbol>] [-e|--encode] [-h|--help]')
     process.exit(1)
 }
 let price_float = parseFloat(/** @type {string} */ (values.price))
@@ -79,5 +80,7 @@ output += ' '
 output += `-${put_strike_count} ($${put_strike_amount.toFixed(2)})`
 output += ' '
 output += `x${(put_strike_amount/call_strike_amount).toFixed(2)}`
+
+if (values.encode) output = encodeURIComponent(output)
 
 console.info(output)

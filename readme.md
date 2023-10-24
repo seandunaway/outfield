@@ -17,7 +17,7 @@ to [spit](https://github.com/seandunaway/spit) at open
 ```
 $ ./index.mjs -h
 
-usage: [-p|--price <price>] [-s|--symbol <symbol>] [-h|--help]
+usage: [-p|--price <price>] [-s|--symbol <symbol>] [-e|--encode] [-h|--help]
 
 $ ./index.mjs -s tsla -p 0.20
 
