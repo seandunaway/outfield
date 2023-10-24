@@ -16,10 +16,16 @@ if (values.help || positionals.length) {
     console.error('usage: [-p|--price <price>] [-s|--symbol <symbol>] [-e|--encode] [-h|--help]')
     process.exit(1)
 }
+
+let symbol = /** @type {string} */ (values.symbol).toUpperCase()
 let price_float = parseFloat(/** @type {string} */ (values.price))
 
-let dom = await JSDOM.fromURL(`https://finance.yahoo.com/quote/${values.symbol}/options`)
+let dom = await JSDOM.fromURL(`https://finance.yahoo.com/quote/${symbol}/options`)
 let document = dom.window.document
+
+let quote_text = document.querySelector('[data-test="qsp-price"]')?.textContent
+if (!quote_text) throw new Error()
+let quote = parseFloat(quote_text)
 
 let options = []
 let tables = document.querySelectorAll('table')
@@ -75,6 +81,8 @@ for (let i = options.length - 1; i >= 0; i--) {
 if (!call_strike_amount && !put_strike_amount) process.exit(1)
 
 let output = ''
+output += `${symbol}:${quote.toFixed(2)}`
+output += ' '
 output += `+${call_strike_count} ($${call_strike_amount.toFixed(2)})`
 output += ' '
 output += `-${put_strike_count} ($${put_strike_amount.toFixed(2)})`
