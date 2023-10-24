@@ -47,22 +47,37 @@ for (let table of tables) {
     }
 }
 
+let call_strike_count = 0
 let call_strike_amount = 0.0
 for (let i = 0; i <= options.length - 1; i++) {
     if (options[i].type !== 'call') continue
     if (options[i].itm) continue
+
+    call_strike_count++
     call_strike_amount += options[i].ask
+
     if (options[i].price <= price_float) break
 }
 
+let put_strike_count = 0
 let put_strike_amount = 0.0
 for (let i = options.length - 1; i >= 0; i--) {
     if (options[i].type !== 'put') continue
     if (options[i].itm) continue
+
+    put_strike_count++
     put_strike_amount += options[i].ask
+
     if (options[i].price <= price_float) break
 }
 
 if (!call_strike_amount && !put_strike_amount) process.exit(1)
 
-console.info(`+${call_strike_amount.toFixed(2)} -${put_strike_amount.toFixed(2)}`)
+let output = ''
+output += `+${call_strike_count} ($${call_strike_amount.toFixed(2)})`
+output += ' '
+output += `-${put_strike_count} ($${put_strike_amount.toFixed(2)})`
+output += ' '
+output += `x${(put_strike_amount/call_strike_amount).toFixed(2)}`
+
+console.info(output)
