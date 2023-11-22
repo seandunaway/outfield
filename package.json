@@ -1,6 +1,8 @@
 {
   "name": "outfield",
   "version": "1.0.0",
+  "bin": "./index.mjs",
+  "repository": "github:seandunaway/outfield",
   "dependencies": {
     "jsdom": "^22.1.0"
   }
