@@ -1,5 +1,5 @@
 {
-  "name": "outfield",
+  "name": "@seandunaway/outfield",
   "version": "1.0.0",
   "bin": "./index.mjs",
   "repository": "github:seandunaway/outfield",
